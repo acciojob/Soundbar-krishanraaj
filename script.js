@@ -1,5 +1,5 @@
 const sounds = [
-  'sound1.mp3',
+  '',
   'sound2.mp3',
   'sound3.mp3',
   'sound4.mp3',
