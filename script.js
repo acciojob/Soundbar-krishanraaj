@@ -1,38 +1,40 @@
-//your JS code here. If required.
-// List of sound files (must match files in the 'sounds' folder)
-const sounds = ['sound1.mp3', 'sound2.mp3', 'sound3.mp3', 'sound4.mp3'];
+// Ensure audio files exist in the 'sounds' folder
+const sounds = [
+  'sound1.mp3',
+  'sound2.mp3',
+  'sound3.mp3',
+  'sound4.mp3',
+  'sound5.mp3'
+];
 
-// Reference to the buttons container
-const buttonsContainer = document.getElementById('buttons');
-
-// Store created audio objects
+const container = document.getElementById('buttons');
 const audioElements = [];
 
-// Create a button for each sound
+// Dynamically create buttons for each audio
 sounds.forEach((sound, index) => {
-  const button = document.createElement('button');
-  button.className = 'btn';
-  button.innerText = `Play ${sound.split('.')[0]}`;
-  buttonsContainer.appendChild(button);
+  const btn = document.createElement('button');
+  btn.className = 'btn';
+  btn.innerText = `Play ${index + 1}`;
+  container.appendChild(btn);
 
   const audio = new Audio(`sounds/${sound}`);
   audioElements.push(audio);
 
-  button.addEventListener('click', () => {
-    stopAll();   // Stop any other playing sounds
+  btn.addEventListener('click', () => {
+    stopAll();
     audio.play();
   });
 });
 
 // Stop button
-const stopButton = document.createElement('button');
-stopButton.className = 'stop';
-stopButton.innerText = 'Stop';
-buttonsContainer.appendChild(stopButton);
+const stopBtn = document.createElement('button');
+stopBtn.className = 'stop';
+stopBtn.innerText = 'Stop';
+container.appendChild(stopBtn);
 
-stopButton.addEventListener('click', stopAll);
+stopBtn.addEventListener('click', stopAll);
 
-// Function to stop all audio
+// Stop all audio
 function stopAll() {
   audioElements.forEach(audio => {
     audio.pause();
